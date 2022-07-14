@@ -2,13 +2,8 @@ namespace FineCollectionService.DomainServices;
 
 public class HardCodedFineCalculator : IFineCalculator
 {
-    public int CalculateFine(string licenseKey, int violationInKmh)
+    public int CalculateFine(int violationInKmh)
     {
-        if (licenseKey != "HX783-K2L7V-CRJ4A-5PN1G")
-        {
-            throw new InvalidOperationException("Invalid license-key specified.");
-        }
-
         int fine = 9; // default administration fee
         if (violationInKmh < 5)
         {
