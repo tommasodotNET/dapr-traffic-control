@@ -7,7 +7,7 @@
 | Dapr CLI version     | v1.7.1                    |
 | Language             | C#                        |
 | Platform             | .NET 6                    |
-| Environment          | Self hosted or Kubernetes |
+| Environment          | Self hosted               |
 
 This repository contains a sample application that simulates a traffic-control system using Dapr. For this sample I've used a speeding-camera setup as can be found on several Dutch highways. A set of cameras are placed at the beginning and the end of a stretch of highway. Using data from these cameras, the average speed of a vehicle is measured. If this average speed is above the speeding limit on this highway, the driver of the vehicle receives a fine.
 
@@ -220,61 +220,6 @@ To use the actor based implementation, uncomment the statement that defines the 
 Now you can restart the application just as before. The behavior is exactly the same, but you will see that the logging of the TrafficControlService will be emitted by the `VehicleActor`:  
 
 ![](img/logging-trafficcontrolservice-actors.png)
-
-## Run the application on Kubernetes
-
-Execute the following steps to run the sample application on Kubernetes:
-
-1. Make sure you have installed Dapr on your machine on a Kubernetes cluster as described in the [Dapr documentation](https://docs.dapr.io/getting-started/install-dapr/).
-
-1. Open a new command-shell.
-
-1. Change the current folder to the `src/k8s` folder of this repo.
-
-1. Run the `build-docker-images.ps1` script. This script will build Docker images for all the services and a custom Mosquitto image used when running on Kubernetes.
-
-1. Execute the `start.ps1` script. All services will be created in the `dapr-trafficcontrol` namespace.
-
-You can check whether everything is running correctly by examining the container logs. There are several ways of doing that. Let's do it using the Docker CLI:
-
-1. Find out the container Id of the services:
-
-    ```console
-    docker ps
-    ```
-
-  > For every service, 2 containers will be running: the service and the Dapr sidecar. Make sure you pick the Id of a container running the .NET service and not the Dapr sidecar.
-
-1. View the log for each of the services (replace the Id with the Id of one of your services):
-
-    ```console
-    docker logs e2ed262f836e
-    ```
-
-To see the emails that are sent by the FineCollectionService, open a browser and browse to [http://localhost:30000](http://localhost:30000).
-
-To stop the application and remove everything from the Kubernetes cluster, execute the `stop.ps1` script.
-
-### Troubleshooting
-
-If you get any errors while trying to run the application on Kubernetes, please double check whether you have installed Dapr into your Kubernetes cluster. You can check this by executing the command `dapr status -k` in a command-shell. You should see something like this:
-
-```console
-  NAME                   NAMESPACE    HEALTHY  STATUS   REPLICAS  VERSION  AGE  CREATED
-  dapr-placement-server  dapr-system  True     Running  1         1.5.0    14d  2021-11-17 20:40.01
-  dapr-operator          dapr-system  True     Running  1         1.5.0    14d  2021-11-17 20:40.00
-  dapr-sidecar-injector  dapr-system  True     Running  1         1.5.0    14d  2021-11-17 20:40.00
-  dapr-sentry            dapr-system  True     Running  1         1.5.0    14d  2021-11-17 20:40.00
-  dapr-dashboard         dapr-system  True     Running  1         0.9.0    14d  2021-11-17 20:40.00
-```
-
-If Dapr is not installed correctly in your cluster, you will see this message:
-
-```console
-No status returned. Is Dapr initialized in your cluster?
-```
-
-In that case, install Dapr by executing the command `dapr init -k` in a command-shell.
 
 ## Dapr for .NET Developers
 
