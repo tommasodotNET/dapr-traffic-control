@@ -45,9 +45,8 @@ public class TrafficController : ControllerBase
             _logger.LogInformation($"ENTRY detected in lane {msg.Lane} at {msg.Timestamp.ToString("hh:mm:ss")} " +
                 $"of vehicle with license-number {msg.LicenseNumber}.");
 
-            // store vehicle state
-            var vehicleState = new VehicleState(msg.LicenseNumber, msg.Timestamp, null);
-            await _vehicleStateRepository.SaveVehicleStateAsync(vehicleState);
+            // Save store vehicle state
+            // TODO
 
             return Ok();
         }
@@ -64,11 +63,7 @@ public class TrafficController : ControllerBase
         try
         {
             // get vehicle state
-            var state = await _vehicleStateRepository.GetVehicleStateAsync(msg.LicenseNumber);
-            if (state == default(VehicleState))
-            {
-                return NotFound();
-            }
+            // TODO
 
             // log exit
             _logger.LogInformation($"EXIT detected in lane {msg.Lane} at {msg.Timestamp.ToString("hh:mm:ss")} " +
@@ -94,7 +89,7 @@ public class TrafficController : ControllerBase
                 };
 
                 // publish speedingviolation (Dapr publish / subscribe)
-                await daprClient.PublishEventAsync("pubsub", "speedingviolations", speedingViolation);
+                // TODO
             }
 
             return Ok();
@@ -113,9 +108,9 @@ public class TrafficController : ControllerBase
         {
             try
             {
-                var actorId = new ActorId(msg.LicenseNumber);
-                var proxy = ActorProxy.Create<IVehicleActor>(actorId, nameof(VehicleActor));
-                await proxy.RegisterEntryAsync(msg);
+                // Create actor instance and register entry
+                // TODO
+
                 return Ok();
             }
             catch
@@ -129,9 +124,9 @@ public class TrafficController : ControllerBase
         {
             try
             {
-                var actorId = new ActorId(msg.LicenseNumber);
-                var proxy = ActorProxy.Create<IVehicleActor>(actorId, nameof(VehicleActor));
-                await proxy.RegisterExitAsync(msg);
+                // Create actor instance and register exit
+                // TODO
+
                 return Ok();
             }
             catch
