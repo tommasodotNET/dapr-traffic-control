@@ -22,13 +22,11 @@ public class VehicleActor : Actor, IVehicleActor, IRemindable
                 $"of vehicle with license-number {msg.LicenseNumber}.");
 
             // store vehicle state
-            var vehicleState = new VehicleState(msg.LicenseNumber, msg.Timestamp);
-            await this.StateManager.SetStateAsync("VehicleState", vehicleState);
+            // TODO
 
             // register a reminder for cars that enter but don't exit within 20 seconds
             // (they might have broken down and need road assistence)
-            await RegisterReminderAsync("VehicleLost", null,
-                TimeSpan.FromSeconds(20), TimeSpan.FromSeconds(20));
+            // TODO
         }
         catch (Exception ex)
         {
@@ -48,9 +46,7 @@ public class VehicleActor : Actor, IVehicleActor, IRemindable
             await UnregisterReminderAsync("VehicleLost");
 
             // get vehicle state
-            var vehicleState = await this.StateManager.GetStateAsync<VehicleState>("VehicleState");
-            vehicleState = vehicleState with { ExitTimestamp = msg.Timestamp };
-            await this.StateManager.SetStateAsync("VehicleState", vehicleState);
+            // TODO
 
             // handle possible speeding violation
             int violation = _speedingViolationCalculator.DetermineSpeedingViolationInKmh(
@@ -69,7 +65,7 @@ public class VehicleActor : Actor, IVehicleActor, IRemindable
                 };
 
                 // publish speedingviolation (Dapr publish / subscribe)
-                await _daprClient.PublishEventAsync("pubsub", "speedingviolations", speedingViolation);
+                // TODO
             }
         }
         catch (Exception ex)
@@ -83,9 +79,10 @@ public class VehicleActor : Actor, IVehicleActor, IRemindable
         if (reminderName == "VehicleLost")
         {
             // remove lost vehicle timer
-            await UnregisterReminderAsync("VehicleLost");
+            // TODO
 
-            var vehicleState = await this.StateManager.GetStateAsync<VehicleState>("VehicleState");
+            // get vehicle state
+            // TODO
 
             Logger.LogInformation($"Lost track of vehicle with license-number {vehicleState.LicenseNumber}. " +
                 "Sending road-assistence.");

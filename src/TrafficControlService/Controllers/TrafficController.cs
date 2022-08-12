@@ -69,9 +69,8 @@ public class TrafficController : ControllerBase
             _logger.LogInformation($"EXIT detected in lane {msg.Lane} at {msg.Timestamp.ToString("hh:mm:ss")} " +
                 $"of vehicle with license-number {msg.LicenseNumber}.");
 
-            // update state
-            var exitState = state.Value with { ExitTimestamp = msg.Timestamp };
-            await _vehicleStateRepository.SaveVehicleStateAsync(exitState);
+            // update state with the correct exit timestamp
+            // TODO
 
             // handle possible speeding violation
             int violation = _speedingViolationCalculator.DetermineSpeedingViolationInKmh(exitState.EntryTimestamp, exitState.ExitTimestamp.Value);
