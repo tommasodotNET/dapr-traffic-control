@@ -92,7 +92,7 @@ Start the services you created:
 1. Execute the following command (using the Dapr cli) to run the TrafficControlService:
 
     ```console
-    dapr run --app-id trafficcontrolservice --app-port 6000 --dapr-http-port 3600 --dapr-grpc-port 60000 --config ../dapr/config/config.yaml --components-path ../dapr/components dotnet run
+    dapr run --app-id trafficcontrolservice --app-port 6000 --dapr-http-port 3600 --dapr-grpc-port 60000 --components-path ../dapr/components dotnet run
     ```
 
     > Alternatively you can also run the `start-selfhosted.ps1` script.
