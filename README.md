@@ -11,7 +11,7 @@ This is an overview of the fictitious setup I'm simulating in this sample:
 
 There's 1 entry-camera and 1 exit-camera per lane. When a car passes an entry-camera, the license-number of the car and the timestamp is registered.
 
-When the car passes an exit-camera, this timestamp is also registered by the system. The system then calculates the average speed of the car based on the entry- and exit-timestamp. If a speeding violation is detected, a message is sent to the Central Fine Collection Agency. They will retrieve the information of the owner of the vehicle and send an email with the fine.
+When the car passes an exit-camera, this timestamp is also registered by the system. The system then calculates the average speed of the car based on the entry- and exit-timestamp. If a speeding violation is detected, a message is sent to the FineControlService, that retrieves the information of the owner of the vehicle from the VehicleRegistrationService and send him/her a fine.
 
 ## Simulation
 
@@ -119,7 +119,7 @@ You should now see logging in each of the shells, similar to the logging shown b
 
 ![VehicleRegistrationService logging](img/logging-vehicleregistrationservice.png)
 
-Test the services:
+## Test the services
 
 1. Open Postman.
 
