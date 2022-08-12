@@ -4,28 +4,34 @@
 [Route("")]
 public class CollectionController : ControllerBase
 {
+    private static string? _fineCalculatorLicenseKey = null;
     private readonly ILogger<CollectionController> _logger;
     private readonly IFineCalculator _fineCalculator;
-    private readonly VehicleRegistrationService _vehicleRegistrationService;
 
     public CollectionController(ILogger<CollectionController> logger,
-        IFineCalculator fineCalculator, VehicleRegistrationService vehicleRegistrationService,
+        IFineCalculator fineCalculator,
         DaprClient daprClient)
     {
         _logger = logger;
         _fineCalculator = fineCalculator;
         _vehicleRegistrationService = vehicleRegistrationService;
+
+        // set finecalculator component license-key
+        if (_fineCalculatorLicenseKey == null)
+        {
+            //TODO Day 2: Get the license-key from Dapr Secrets
+            _fineCalculatorLicenseKey = "HX783-K2L7V-CRJ4A-5PN1G";
+        }
     }
 
-    [Topic("pubsub", "speedingviolations")]
     [Route("collectfine")]
     [HttpPost()]
     public async Task<ActionResult> CollectFine(SpeedingViolation speedingViolation, [FromServices] DaprClient daprClient)
     {
-        decimal fine = _fineCalculator.CalculateFine(speedingViolation.ViolationInKmh);
+        decimal fine = _fineCalculator.CalculateFine(_fineCalculatorLicenseKey!, speedingViolation.ViolationInKmh);
 
         // get owner info (Dapr service invocation)
-        var vehicleInfo = _vehicleRegistrationService.GetVehicleInfo(speedingViolation.VehicleId).Result;
+        // TODO
 
         // log fine
         string fineString = fine == 0 ? "tbd by the prosecutor" : $"{fine} Euro";
@@ -44,7 +50,9 @@ public class CollectionController : ControllerBase
             ["emailTo"] = vehicleInfo.OwnerEmail,
             ["subject"] = $"Speeding violation on the {speedingViolation.RoadId}"
         };
-        await daprClient.InvokeBindingAsync("sendmail", "create", body, metadata);
+
+        // send email using output binding
+        // TODO
 
         return Ok();
     }
