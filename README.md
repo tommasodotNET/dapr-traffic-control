@@ -1,7 +1,7 @@
 # Day 1 - Dapr Traffic Control Sample
 
 During the 2 days labs you will create a sample application that simulates a traffic-control system using Dapr.
-This repository contains the Day 1 services you will impement for the traffic-control system. The traffic-control system is made up of a set of cameras placed at the beginning and the end of a stretch of highway. Using data from these cameras, the average speed of a vehicle is measured. If this average speed is above the speeding limit on this highway, the driver of the vehicle receives a fine.
+This repository contains the Day 1 services you will implement for the traffic-control system. The traffic-control system is made up of a set of cameras placed at the beginning and the end of a stretch of highway. Using data from these cameras, the average speed of a vehicle is measured. If this average speed is above the speeding limit on this highway, the driver of the vehicle receives a fine.
 
 ## Overview
 
