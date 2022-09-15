@@ -161,8 +161,4 @@ Now you can restart the application just as before. The behavior is exactly the 
 
 ## Test the services
 
-Once you have successfully started the TrafficControlService and the Simulator, you can observe from the console output that the simulator in generating random car entry and car exit and the TrafficControlService is receiving those entry and exit. 
-
-## Put everything together
-
-TODO
+Once you have successfully started the TrafficControlService and the Simulator, you can observe from the console output that the simulator is generating random car entry and car exit and the TrafficControlService is receiving those entry and exit.
