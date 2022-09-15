@@ -14,7 +14,6 @@ public class CollectionController : ControllerBase
     {
         _logger = logger;
         _fineCalculator = fineCalculator;
-        _vehicleRegistrationService = vehicleRegistrationService;
 
         // set finecalculator component license-key
         if (_fineCalculatorLicenseKey == null)
