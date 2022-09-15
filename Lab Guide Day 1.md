@@ -61,6 +61,6 @@ Once you have implemented the `FineCollectionService`, you can test it following
 
    ![Mailbox](img/mailbox.png)
 
-That's all for your first lab today.
+That's all for your first lab.
 
-See you tomorrow for the last lab!
+See you for the last part!

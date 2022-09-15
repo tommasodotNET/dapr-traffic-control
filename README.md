@@ -150,7 +150,3 @@ You should now see logging in each of the shells, similar to the logging shown b
 1. To see the emails that are sent by the FineCollectionService, open a browser and browse to [http://localhost:4000](http://localhost:4000). You should see the emails coming in:
 
    ![Mailbox](img/mailbox.png)
-
-That's all for your first lab today.
-
-See you tomorrow for the last lab!
