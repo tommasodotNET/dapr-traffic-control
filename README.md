@@ -119,3 +119,34 @@ You should now see logging in each of the shells, similar to the logging shown b
 
 ![VehicleRegistrationService logging](img/logging-vehicleregistrationservice.png)
 
+## Test the services
+
+1. Open Postman.
+
+1. Test the `VehicleRegistrationService` with a GET request to `http://localhost:6002/vehicleinfo/13-XK-46`.
+
+    > Alternatively you can also make the http call with the tool of your choice.
+
+1. You should get this result:
+
+    ![VehicleRegistrationService test](img/test-vehicleregistrationservice.png)
+
+1. Test the `FineCollectionService` with a POST request to `http://localhost:6001/collectfine`.
+
+1. Fill the request body with raw JSON as follow:
+
+    ```console
+    {
+       "VehicleId": "13-XK-46",
+       "RoadId": "A14",
+       "ViolationInKmh": 20,
+       "Timestamp": "2022-07-14T16:53:00"
+    }
+    ```
+    > Alternatively you can also make the http call with the tool of your choice.
+
+1. You should get a 200 OK result and check if there is a new email with the fine details.
+
+1. To see the emails that are sent by the FineCollectionService, open a browser and browse to [http://localhost:4000](http://localhost:4000). You should see the emails coming in:
+
+   ![Mailbox](img/mailbox.png)
