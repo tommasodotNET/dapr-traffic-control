@@ -10,10 +10,12 @@ First of all, get familiar with the README.md file in the root of this repositor
 - [ ] Install [Visual Studio Code](https://code.visualstudio.com/) on your laptop.
 - [ ] Install [Dapr CLI](https://docs.dapr.io/getting-started/install-dapr-cli/) on your laptop.
 - [ ] Install [Postman](https://www.postman.com/) on your laptop.
+
+Optional:
 - [ ] Install [Dapr Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-dapr) on your laptop.
 - [ ] Install [C# extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) on your laptop.
 
-## Fill in the gaps
+## Fill in the blanks
 
 You have provided with a partial solution of the traffic control system application. In this lab you will add the Dapr building blocks you have seen so far. The `VehicleRegistrationService` is already completed. You will focus on the `FineCollectionService`.
 
