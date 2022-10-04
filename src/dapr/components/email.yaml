@@ -12,13 +12,9 @@ spec:
   - name: port
     value: 4025
   - name: user
-    secretKeyRef:
-      name: smtp.user
-      key: smtp.user
+    value: _username
   - name: password
-    secretKeyRef:
-      name: smtp.password
-      key: smtp.password
+    value: _password
   - name: skipTLSVerify
     value: true
 auth:
