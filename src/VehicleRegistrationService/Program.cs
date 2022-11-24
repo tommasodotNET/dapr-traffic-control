@@ -3,6 +3,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IVehicleInfoRepository, InMemoryVehicleInfoRepository>();
 
+builder.Services.AddControllers().AddDapr();
+
 var app = builder.Build();
 
 // configure web-app
