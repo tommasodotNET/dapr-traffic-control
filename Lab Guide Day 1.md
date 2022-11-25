@@ -27,6 +27,10 @@ Moreover, you will have to add the code to retrieve the vehicle's information fr
 
 Lastly, you will have to use Dapr's Output Binding to send the email. As described in the README, the email service is simulated using Maildev.
 
+### Dapr Components
+
+You will find the email.yaml component ready to use, you will need to work on the pubsub.yaml that will be used also for day 2. Please refer to the [dapr docs](https://docs.dapr.io/reference/components-reference/supported-pubsub/setup-rabbitmq/).
+
 ## Test the services
 
 Once you have implemented the `FineCollectionService`, you can test it following these steps:
