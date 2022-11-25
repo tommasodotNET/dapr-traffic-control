@@ -23,7 +23,7 @@ You have provided with a partial solution of the traffic control system applicat
 
 The `FineCollectionService` is responsible for collecting fines from drivers. It is a simple service that has a single endpoint: `POST /collectfine`. The service will be invoked by `TrafficControlService`using Pub/Sub building block. The `TrafficControlService`is not within the scope of the first lab, so you will not implement it. You will have to add necessary code to make it ready to be invoked by `TrafficControlService` via Pub/Sub.
 
-Moreover, you will have to add the code to retrieve the vehicle's information from the `VehicleRegistrationService` using the Service Invocation building block. The `VehicleRegistrationService` is already implemented and you will not have to change it.
+Moreover, you will have to add the code to retrieve the vehicle's information from the `VehicleRegistrationService` using the Service Invocation building block. The `VehicleRegistrationService` is already implemented and you will not have to change it. Please remember to check the correct registration of services for Dapr in Program.cs.
 
 Lastly, you will have to use Dapr's Output Binding to send the email. As described in the README, the email service is simulated using Maildev.
 
