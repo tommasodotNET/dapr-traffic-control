@@ -35,6 +35,10 @@ This is done using the Pub/Sub building block sending a `SpeedingViolation` mess
 
 Now that you have implemented the base logic for the `TrafficControlService`, you will implement the same logic using the Actor pattern. You will find the partial implementation for the actor's logic in the [Actor](./src/TrafficControlService/Actors/) folder.
 
+### Dapr Components
+
+You need to use the pubsub.yaml component from day one changing the scope, then you will need to work on the statestore.yaml, please refer to the [dapr docs](https://docs.dapr.io/reference/components-reference/supported-state-stores/setup-redis/)). You will need to work also on the entrycam.yaml and exitcam.yaml for mqtt bindings, please refer to the [dapr docs](https://docs.dapr.io/reference/components-reference/supported-bindings/mqtt/).
+
 ## Test the services
 
 To test only the `TrafficControlService`, you can use Postman as in the previous lab.
