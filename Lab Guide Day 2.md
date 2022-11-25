@@ -24,7 +24,7 @@ The repository you have been provided with contains the new services on which yo
 In order to complete the lab, you can either work both on day1 and day2 repositories or merge them.
 If you want to merge them, you will need to add the new projects into the `dapr-traffic-control.sln` solution file.
 
-In this lab you will be focusing on the `TrafficControlService`, implemented in two different ways - with or without the Actor pattern.
+In this lab you will be focusing on the `TrafficControlService`, implemented in two different ways - with or without the Actor pattern. Please remember to check the correct registration of services for Dapr in Program.cs.
 
 ### TrafficControlService - Without Actors
 
