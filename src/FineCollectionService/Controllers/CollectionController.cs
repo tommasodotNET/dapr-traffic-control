@@ -23,6 +23,7 @@ public class CollectionController : ControllerBase
         }
     }
 
+    // TODO: Bind this method to the pub/sub topic (only required for day 2)
     [Route("collectfine")]
     [HttpPost()]
     public async Task<ActionResult> CollectFine(SpeedingViolation speedingViolation, [FromServices] DaprClient daprClient)
