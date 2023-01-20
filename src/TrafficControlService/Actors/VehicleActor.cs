@@ -45,7 +45,7 @@ public class VehicleActor : Actor, IVehicleActor, IRemindable
             // remove lost vehicle timer
             await UnregisterReminderAsync("VehicleLost");
 
-            // get vehicle state
+            // get and update vehicle state
             // TODO
 
             // handle possible speeding violation
