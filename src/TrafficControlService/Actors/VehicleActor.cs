@@ -47,7 +47,7 @@ public class VehicleActor : Actor, IVehicleActor, IRemindable
             // remove lost vehicle timer
             await UnregisterReminderAsync("VehicleLost");
 
-            // get vehicle state
+            // get and update vehicle state
             var vehicleState = await this.StateManager.GetStateAsync<VehicleState>("VehicleState");
             vehicleState = vehicleState with { ExitTimestamp = msg.Timestamp };
             await this.StateManager.SetStateAsync("VehicleState", vehicleState);
